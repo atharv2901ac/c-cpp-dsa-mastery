@@ -147,6 +147,14 @@ void subjecttopmath(Student* list[], int count)
     printf("ROLL NO: %d\n", list[top]->rollno);
     printf("MARKS ACQUIRED IN MATHS: %d\n", list[top]->maths);
 }
+void average(Student* list[], int count){
+    int k;
+    for(int i = 0; i<count; i++){
+        k=k+list[i]->percnt;
+    }
+    printf("\n===== AVERAGE SCORE =====\n");
+    printf("SCORE: %d\n", k/count);
+}
 int main(){
     Student* list[5] ;
     int count = 0;
@@ -164,4 +172,5 @@ int main(){
     subjecttopphy(list,count);
     subjecttopchem(list,count);
     subjecttopmath(list,count);
+    average(list,count);
 }

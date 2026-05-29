@@ -132,3 +132,17 @@ int compare(char* str1, char* str2){
     }
     return true;
 }
+float sqrt(float n){
+    float x=n;
+    float y=1;
+    float e=0.000001;
+
+    while(x - y > e){
+        x = (x + y)/2;
+        y = n/x;
+    }
+    return x;
+}
+int factors(int x){
+    int s;
+}
