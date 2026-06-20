@@ -12,9 +12,11 @@ class Sales{
     public:
         Sales(int count){
             id = count;
+            price = 0;
         }
         void print(){
-            printf("| ID: %d | PRODUCT: %s | PRICE: %d | BUYER: %s |\n",id,product.c_str(),price,buyer.c_str());
+            printf("| ID: %d | PRODUCT: %s | PRICE: %d | BUYER: %s |\n",
+                   id, product.c_str(), price, buyer.c_str());
         }
         int getId(){
             return id;
@@ -27,13 +29,16 @@ class Sales{
         }
         void acceptData(){
             char buf[256];
+
             printf("ENTER THE PRODUCT'S NAME: ");
-             scanf("%s", buf);
+            scanf("%255s", buf);
             product = buf;
+
             printf("ENTER THE PRICE OF THE PRODUCT: ");
-             scanf("%d",&price);
+            scanf("%d", &price);
+
             printf("ENTER THE BUYER'S NAME: ");
-             scanf("%s", buf);
+            scanf("%255s", buf);
             buyer = buf;
         }
 };
@@ -46,56 +51,57 @@ class ProductManager{
         void addEntry(){
             Sales* s = new Sales(count+1);
             if(productlist == NULL){
-                productlist = (Sales**) calloc(count+1,sizeof(Sales*));
+                productlist = (Sales**) calloc(count+1, sizeof(Sales*));
             }
             else{
-                productlist = (Sales**) realloc(productlist,(count+1)*sizeof(Sales*));
+                productlist = (Sales**) realloc(productlist, (count+1)*sizeof(Sales*));
             }
             productlist[count] = s;
+            productlist[count]->acceptData();
             count++;
         }
         void remove(){
-            if(count!=0){
-                productlist = (Sales**) realloc(productlist,(count-1)*sizeof(Sales*));
+            if(count != 0){
+                delete productlist[count-1];
+                productlist = (Sales**) realloc(productlist, (count-1)*sizeof(Sales*));
                 count--;
             }
             else{
-                printf("CANNOT PERFORM THE GIVEN ACTIONS :(");
+                printf("CANNOT PERFORM THE GIVEN ACTIONS :(\n");
             }
         }
         int getProIndex(int id){
             int index = -1;
-            for(int i=0; i<count; i++){
-                if(productlist[i]->getId()==id){
-               index = i;
+            for(int i = 0; i < count; i++){
+                if(productlist[i]->getId() == id){
+                    index = i;
+                }
             }
-        }
-        return index;
+            return index;
         }
         void printList(){
-            if(count==0){
-                printf("LIST IS EMPTY");
+            if(count == 0){
+                printf("LIST IS EMPTY\n");
             }
             else{
-                for(int j=0; j<count; j++){
+                for(int j = 0; j < count; j++){
                     productlist[j]->print();
                 }
             }
         }
-        
 };
 
 int main(int argc, char const *argv[])
 {
     ProductManager* pm = new ProductManager();
     pm->addEntry();
-    /*pm->addEntry();
     pm->addEntry();
     pm->addEntry();
-    pm->addEntry();*/
+    pm->addEntry();
+    pm->addEntry();
     pm->addEntry();
     pm->remove();
     pm->printList();
+    delete pm;
     return 0;
 }
-
