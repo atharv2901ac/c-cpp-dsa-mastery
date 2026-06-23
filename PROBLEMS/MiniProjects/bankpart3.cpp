@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string>
 using namespace std;
@@ -91,6 +92,15 @@ public:
         balance = 0;
         customer = NULL;
     }
+    void SaveToFile() {
+    ofstream file("accounts.txt", ios::app);
+
+    file << "| ACCNO.: " << accNo;
+    file << "| BALANCE: " << balance;
+    file << endl;
+
+    file.close();
+    }
 
     void SetAccNo(int accNo) {
         this->accNo = accNo;
@@ -113,6 +123,9 @@ public:
     }
 
     void Deposit(double amount) {
+        ofstream file("transactions.txt", ios::app);
+        file << accNo << ",DEPOSIT," << amount << endl;
+        file.close();
         if (amount <= 0) {
             cout << "Invalid amount" << endl;
             return;
@@ -130,6 +143,9 @@ public:
     }
 
     void Withdraw(double amount) {
+        ofstream file("transactions.txt", ios::app);
+        file << accNo << ",WITHDRAWAL," << amount << endl;
+        file.close();
         if (amount <= 0) {
             cout << "Invalid amount" << endl;
             return;
@@ -174,7 +190,17 @@ public:
     Customer() {
         account = NULL;
     }
+    void SaveToFile() {
+    ofstream file("customers.txt", ios::app);
 
+    file << "| ID: " << id;
+    file << "| NAME: " << name;
+    file << "| CONTACT: " << contact;
+    file << "| EMAIL: " << email;
+    file << endl;
+
+    file.close();
+    }
     void SetAccount(Account* account) {
         this->account = account;
     }
@@ -368,6 +394,7 @@ int main() {
             bank->AddCustomer(customer);
 
             cout << "Customer created successfully" << endl;
+            customer->SaveToFile();
         }
 
         else if (choice == 2) {
@@ -380,6 +407,7 @@ int main() {
                 cin >> accNo;
 
                 bank->CreateAccount(customer, accNo);
+                customer->GetAccount()->SaveToFile();
             }
         }
 
