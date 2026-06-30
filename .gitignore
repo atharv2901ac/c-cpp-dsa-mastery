@@ -67,3 +67,12 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Compiled binaries
+*.exe
+*.out
+*.o
+
+# Editor/IDE temp files
+tempCodeRunnerFile.cpp
+.vscode/
