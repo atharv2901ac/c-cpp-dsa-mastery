@@ -196,3 +196,17 @@ DATA STRUCTURES
      \
       D
 
+
+
+
+| Data Structure       | Traverse | Search |     Insert    |     Delete    | Update | Sort | Reverse | Random Access | Dynamic Size |
+| -------------------- | :------: | :----: | :-----------: | :-----------: | :----: | :--: | :-----: | :-----------: | :----------: |
+| Array                |     O    |    O   |       O       |       O       |    O   |   O  |    O    |       O       |       X      |
+| Vector               |     O    |    O   |       O       |       O       |    O   |   O  |    O    |       O       |       O      |
+| Singly Linked List   |     O    |    O   |       O       |       O       |    O   |   O  |    O    |       X       |       O      |
+| Doubly Linked List   |     O    |    O   |       O       |       O       |    O   |   O  |    O    |       X       |       O      |
+| Circular Linked List |     O    |    O   |       O       |       O       |    O   |   O  |    O    |       X       |       O      |
+| Stack                |     O    |    X   |   O *(Push)*  |   O *(Pop)*   |    X   |   X  |    X    |       X       |       O      |
+| Queue                |     O    |    X   | O *(Enqueue)* | O *(Dequeue)* |    X   |   X  |    X    |       X       |       O      |
+| Tree                 |     O    |    O   |       O       |       O       |    O   |  X*  |    X    |       X       |       O      |
+| Graph                |     O    |    O   |       O       |       O       |    O   |   X  |    X    |       X       |       O      |
