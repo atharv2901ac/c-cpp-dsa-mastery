@@ -1,0 +1,198 @@
+                           DATA STRUCTURES
+                                  │
+              ┌───────────────────┴───────────────────┐
+              │                                       │
+       Primitive DS                          Non-Primitive DS
+              │                                       │
+     ┌────────┼────────┐                  ┌───────────┴───────────┐
+     │        │        │                  │                       │
+   Integer   Float   Character         Linear DS            Non-Linear DS
+     │        │        │                  │                       │
+   Boolean   Double                  ┌────┼────┬────┐        ┌────┴────┐
+                                     │    │    │    │        │         │
+                      Vector<------Array Linked Stack Queue  Tree     Graph
+                                          List
+                                            │
+                                    ┌───────┴────────┐
+                                    │                │
+                             Singly Linked     Doubly Linked
+                                  List              List
+                                    │
+                             Circular Linked
+                                  List
+DATA STRUCTURES
+│
+├── Primitive Data Structures
+│   │
+│   ├── Integer
+│   │   • Stores whole numbers
+│   │   • Drawback:
+│   │      - Cannot store decimals
+│   │
+│   ├── Float / Double
+│   │   • Stores decimal numbers
+│   │   • Drawback:
+│   │      - Precision errors may occur
+│   │
+│   ├── Character
+│   │   • Stores one character
+│   │   • Drawback:
+│   │      - Stores only one character
+│   │
+│   └── Boolean
+│       • Stores True or False
+│       • Drawback:
+│          - Only two possible values
+│
+└── Non-Primitive Data Structures
+    │
+    ├── Linear Data Structures
+    │   │
+    │   ├── Array
+    │   │   • Fixed-size collection
+    │   │   • Fast random access (O(1))
+    │   │   • Drawbacks:
+    │   │      - Fixed size
+    │   │      - Slow insertion/deletion
+    │   │
+    │   ├── Vector
+    │   │   • Dynamic array (resizable)
+    │   │   • Rich STL functions
+    │   │   • Fast random access (O(1))
+    │   │   • Drawbacks:
+    │   │      - Slight memory overhead
+    │   │      - Resizing may require copying elements
+    │   │
+    │   ├── Linked List
+    │   │   • Nodes connected by pointers
+    │   │   • Dynamic size
+    │   │   • Drawbacks:
+    │   │      - No direct indexing
+    │   │      - Extra memory for pointers
+    │   │
+    │   ├── Stack (LIFO)
+    │   │   • Last In, First Out
+    │   │   • Used in recursion, undo
+    │   │   • Drawback:
+    │   │      - Only top element is accessible
+    │   │
+    │   └── Queue (FIFO)
+    │       • First In, First Out
+    │       • Used in scheduling and buffering
+    │       • Drawback:
+    │          - Restricted access
+    │
+    └── Non-Linear Data Structures
+        │
+        ├── Tree
+        │   • Parent-child hierarchy
+        │   • Used in file systems and databases
+        │   • Drawbacks:
+        │      - Complex implementation
+        │      - Can become inefficient if unbalanced
+        │
+        └── Graph
+            • Collection of vertices and edges
+            • Used in maps and social networks
+            • Drawbacks:
+               - Complex algorithms
+               - Higher memory usage
+
+
+1. ARRAYS
+
+    Index:       0    1    2    3    4
+               ┌────┬────┬────┬────┬────┐
+    Array:     │ 10 │ 20 │ 30 │ 40 │ 50 │
+               └────┴────┴────┴────┴────┘
+
+            Memory Representation:
+
+                1000     1004     1008     1012     1016
+                ┌────┐   ┌────┐   ┌────┐   ┌────┐   ┌────┐
+                │ 10 │──▶│ 20 │──▶│ 30 │──▶│ 40 │──▶│ 50 │
+                └────┘   └────┘   └────┘   └────┘   └────┘
+(Stored in contiguous memory)
+
+2. VECTOR
+
+    Size = 5
+    Capacity = 8
+
+    Index:        0      1      2      3      4      5      6      7
+                ┌────┬────┬────┬────┬────┬────┬────┬────┐
+    Vector:     │ 10 │ 20 │ 30 │ 40 │ 50 │    │    │    │
+                └────┴────┴────┴────┴────┴────┴────┴────┘
+
+
+3. LINKED LIST
+
+
+
+    a. SINGLY LL
+
+        Head
+         │
+         ▼
+        +-----+------+    +-----+------+    +-----+------+
+        | 10  |  •───┼──► | 20  |  •───┼──► | 30  | NULL |
+        +-----+------+    +-----+------+    +-----+------+
+
+
+
+    b. DOUBLY LL
+
+        NULL ← [10] ⇄ [20] ⇄ [30] → NULL
+
+
+    c. CIRCULAR 
+
+            ┌────────────────────┐
+            │                    │
+            ▼                    │
+          [10] → [20] → [30] ────┘
+
+
+4. QUEUE
+
+      Front                       Rear
+        │                         │
+        ▼                         ▼
+        +----+----+----+----+
+        | 10 | 20 | 30 | 40 |
+        +----+----+----+----+
+
+
+5. STACK [LIFO]
+
+       Top
+        │
+        ▼
+        +----+
+        | 30 |
+        +----+
+        | 20 |
+        +----+
+        | 10 |
+        +----+
+
+
+
+6. TREE
+
+          10
+         /  \
+       20    30
+      /  \     \
+    40    50    60
+
+
+
+7. GRAPH 
+
+      A
+     / \
+    B---C
+     \
+      D
+
