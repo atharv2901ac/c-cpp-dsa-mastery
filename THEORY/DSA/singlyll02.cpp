@@ -11,31 +11,73 @@ class LinkedList{
     Node* Head = nullptr;
     public:
     // Insert
-    void insert(int value)
-{
-        /*Create a new node*/
+    void insertAtStart(int value){
+        
         Node* newNode = new Node();
         newNode->data = value;
-        newNode->next = nullptr;
-
-        /*If the list is empty*/
-        if (Head == nullptr)
-        {
+        if(Head == NULL){
             Head = newNode;
-            return;
+        }else{
+            newNode->next = Head;
+            Head = newNode;
         }
+    }
 
-        /*Traverse to the last node*/
-        Node* temp = Head;
 
-        while (temp->next != nullptr)
-        {
-            temp = temp->next;
+    void InsertAtEnd(int value){
+        
+        Node* newNode = new Node();
+        newNode->data = value;
+        if(Head == NULL){
+            Head = newNode;
         }
+        else{
+            Node* temp = Head;
+            while(temp->next != NULL){
+                temp = temp->next;
+            }
 
-        /*Link the last node to the new node*/
-        temp->next = newNode;
-}
+            temp->next = newNode;
+            
+        }
+    }
+
+     void insertAtposition(int value,int position){
+        
+        Node* newNode = new Node();
+        newNode->data = value;
+        if(Head == NULL){
+            Head = newNode;
+        }else if(position == 0){
+            insertAtStart(value);
+        }
+        else{
+            Node* temp = Head;
+            for(int i=0;i<position-1;i++){
+                temp = temp->next;
+            }
+
+            newNode->next = temp->next;
+            temp->next = newNode;
+            
+        }
+    }
+
+    int size(){
+        if(Head == NULL){
+            return 0;
+        }else{
+            int count = 1;
+            Node* temp = Head;
+            while(temp != NULL){
+                count++;
+                temp = temp->next;
+            }
+            return count;
+
+        }
+    }
+
     // Delete
     // Update
     // Sort
@@ -59,9 +101,10 @@ class LinkedList{
 int main(int argc, char const *argv[])
 {
     LinkedList list;
-    list.insert(20);
-    list.insert(50);
-    list.insert(90);
+    list.insertAtStart(20);
+    list.InsertAtEnd(45);
+    list.insertAtposition(80,2);
+    cout << list.size();
     list.display();
     return 0;
 }
